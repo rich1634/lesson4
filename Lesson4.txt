@@ -1,0 +1,19 @@
+Работа с git
+Visual studio
+
+перед этим добавляем репозиторий git
+
+git remote add lesson41 https://github.com/rich1634/lesson4.git
+
+Выбираем ветку git checkout "ИМЯ1" (мы пока не работаем с main)
+git add .   добавление новых файлов.
+git commit -m "to test" - комит изменений
+git push имя репозитория ИМЯ ВЕТКИ - добавление новых файлов(изменений)  в ветку github
+
+Разобрать команды все еще раз
+
+Удалить ветку на сервере
+
+git push lesson4(имя репозитория) -d new2(имя ветки)
+Удалить ветку локально
+git branch -d new1 
