@@ -1,0 +1,10 @@
+services:
+  nginx:
+    image:  nginx:latest
+    ports:
+      - 8081:80
+    volumes:
+      - nginx-config:/usr/share/nginx/html
+volumes:
+  nginx-config:
+    external: true
