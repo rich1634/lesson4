@@ -1,0 +1,24 @@
+#Создаем Volume
+docker volume create nginx-config
+
+#Создаем файл index.html для одображения на стартовой странице нужного текста
+vim index.html
+
+<h1>Docker<h1>
+
+#Необходимо скопировать index.html в docker volume nginx-config, созданный ранее
+docker run --rm -v nginx-config:/usr/share/nginx/html -v $(pwd):/source busybox cp /source/index.html /usr/share/nginx/html/index.html
+
+# busybox - официальный image очень легкий и содержит базовые утилиты. Будет автоматически удален после создания, т.к. используем ключ -rm
+# nginx-congig:/usr/share/nginx/html - подключает Docker volume внутри контейнера.
+
+
+# Если пользоваться только средствами Docker, то необходимо запустить команду для запуска контейнера с подключением созданного ранее volume:
+
+
+docker run -d --name nginx-container -p 8080:80 -v nginx-config:/usr/share/nginx/html nginx
+
+#Возможно этот же volume включить в docker-compose.yml, как внешний.
+# Создать файл docker-compose.yml (приложен)
+# Запусить контейнер 
+ docker compose up -d
